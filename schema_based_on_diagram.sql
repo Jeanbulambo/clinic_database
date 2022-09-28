@@ -35,3 +35,10 @@ CREATE TABLE invoice_items (
   total_price DECIMAL NOT NULL, invoice_id INT FOREIGN KEY REFERENCES invoices(id),
   treatment_id INT FOREIGN KEY REFERENCES treatments(id)
 ); 
+
+/* Create new many-to-many relationship table between treatments and medical_histories*/
+CREATE TABLE diagnosis (
+  treatment_id INT NOT NULL REFERENCES treatments(id),
+  medical_history_id INT NOT NULL REFERENCES medical_histories(id),
+  PRIMARY KEY (treatment_id, medical_history_id)
+); 
